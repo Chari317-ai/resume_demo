@@ -87,16 +87,15 @@
   .hero h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(34px, 4.4vw, 88px); line-height: 1.25; letter-spacing: .01em; }
   :root[data-lang="en"] .hero h1 { font-size: clamp(32px, 3.8vw, 76px); line-height: 1.15; letter-spacing: -.01em; }
   .hero .lead { margin-top: 28px; color: var(--muted); max-width: 34em; font-size: 1.08em; }
-  .actions { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; margin-top: 36px; }
-  .btn {
-    display: inline-block; padding: 13px 26px; border-radius: 4px; font-weight: 700;
-    text-decoration: none; background: var(--indigo); color: var(--sheet);
+  /* 名片上的聯絡資訊 */
+  .card-contact {
+    display: flex; flex-wrap: wrap; gap: 16px 56px; margin-top: 36px;
+    padding: 20px 28px; background: var(--sheet); border-left: 4px solid var(--indigo); width: fit-content;
   }
-  .btn:hover { filter: brightness(1.12); }
-  .text-link {
-    background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer;
-    text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; text-decoration-color: var(--indigo);
-  }
+  .card-contact dt { color: var(--muted); font-size: .85em; }
+  .card-contact dd { margin: 0; font-size: 1.15em; font-weight: 700; }
+  .card-contact a { text-decoration: none; }
+  .card-contact a:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--indigo); }
   .photo { width: 100%; aspect-ratio: 557 / 492; object-fit: cover; display: block; border-radius: 4px; box-shadow: 16px 16px 0 var(--indigo-soft); }
 
   /* 足跡：台北 → 達拉斯 → 東京 */
@@ -171,14 +170,6 @@
   .traits li { padding: 12px 0; border-top: 1px solid var(--line); }
   .traits li:last-child { border-bottom: 1px solid var(--line); }
 
-  /* ⑦ 聯絡 */
-  .contact { background: var(--indigo); color: var(--sheet); padding-block: 96px; }
-  .contact h2 { font-family: var(--serif); font-size: clamp(30px, 3.2vw, 60px); font-weight: 900; line-height: 1.3; }
-  .contact .lead { margin-top: 16px; opacity: .85; max-width: 32em; }
-  .contact dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 32px; margin-top: 40px; font-size: 1.1em; }
-  .contact dt { opacity: .7; }
-  .contact dd { margin: 0; }
-  .contact a { text-underline-offset: 5px; }
   footer { padding-block: 28px; color: var(--muted); font-size: .85em; }
 
   /* 列印：輸出成乾淨的文件 */
@@ -186,7 +177,7 @@
     @page { size: A4; margin: 14mm; }
     :root { --paper: #fff; --sheet: #fff; --ink: #000; --muted: #444; --line: #ccc; --indigo: #2a4a7f; --indigo-soft: #e3e9f3; }
     body { font-size: 11px; line-height: 1.6; }
-    .nav, .actions, footer, .route::before { display: none; }
+    .nav, footer, .route::before { display: none; }
     .wrap { padding: 0; }
     .hero { min-height: 0; padding-block: 0 16px; grid-template-columns: 1fr 140px; }
     .hero h1 { font-size: 26px; }
@@ -195,8 +186,6 @@
     .block { padding-block: 16px; break-inside: avoid; }
     .block-head { margin-bottom: 12px; }
     .case { padding-block: 12px; break-inside: avoid; }
-    .contact { background: none; color: #000; padding-block: 16px; }
-    .contact h2 { font-size: 20px; }
   }
 </style>
 </head>
@@ -211,7 +200,6 @@
       <li><a href="#education"><span data-l="zh">學歷</span><span data-l="ja">学歴</span><span data-l="en">Education</span></a></li>
       <li><a href="#skills"><span data-l="zh">技能</span><span data-l="ja">スキル</span><span data-l="en">Skills</span></a></li>
       <li><a href="#about"><span data-l="zh">關於我</span><span data-l="ja">自己紹介</span><span data-l="en">About</span></a></li>
-      <li><a href="#contact"><span data-l="zh">聯絡</span><span data-l="ja">連絡先</span><span data-l="en">Contact</span></a></li>
     </ul>
     <div class="langs-switch" role="group" aria-label="Language">
       <button type="button" data-set="zh" aria-pressed="true">中</button>
@@ -240,10 +228,16 @@
       <span data-l="ja" lang="ja">中国語ネイティブ、日本語 JLPT N2、英語 TOEIC 880。国際ビジネス開発、パートナー管理、海外市場開拓の分野で、企業の国境を越えた協力づくりに貢献したいと考えています。</span>
       <span data-l="en" lang="en">Native Mandarin, Japanese JLPT N2, English TOEIC 880. Looking to work in international business development, partner management, and overseas market expansion, helping companies build partnerships across borders.</span>
     </p>
-    <div class="actions">
-      <a class="btn" href="mailto:maroon50317@gmail.com"><span data-l="zh">寄信給我</span><span data-l="ja">メールで連絡する</span><span data-l="en">Email me</span></a>
-      <button class="text-link" type="button" onclick="window.print()"><span data-l="zh">列印／存成 PDF</span><span data-l="ja">印刷／PDF で保存</span><span data-l="en">Print or save as PDF</span></button>
-    </div>
+    <dl class="card-contact" id="contact">
+      <div>
+        <dt><span data-l="zh">電子信箱</span><span data-l="ja">メール</span><span data-l="en">Email</span></dt>
+        <dd><a href="mailto:maroon50317@gmail.com">maroon50317@gmail.com</a></dd>
+      </div>
+      <div>
+        <dt><span data-l="zh">手機</span><span data-l="ja">電話</span><span data-l="en">Phone</span></dt>
+        <dd><a href="tel:+886978760019">+886 978-760-019</a></dd>
+      </div>
+    </dl>
     <ol class="route" aria-label="足跡">
       <li>
         <span class="city"><span data-l="zh">台北</span><span data-l="ja">台北</span><span data-l="en">Taipei</span></span><span class="year">2021</span>
@@ -415,20 +409,6 @@
     </div>
   </section>
 </main>
-
-<!-- ⑦ 聯絡 -->
-<section class="contact" id="contact">
-  <div class="wrap">
-    <h2><span data-l="zh">一起聊聊合作的可能。</span><span data-l="ja">ぜひお気軽にご連絡ください。</span><span data-l="en">Let's talk.</span></h2>
-    <p class="lead"><span data-l="zh">對國際商務、日本市場相關職缺有興趣，歡迎來信。</span><span data-l="ja">国際ビジネスや日本市場に関わるお仕事のご相談をお待ちしています。</span><span data-l="en">I'm open to roles in international business and the Japanese market.</span></p>
-    <dl>
-      <dt><span data-l="zh">電子信箱</span><span data-l="ja">メール</span><span data-l="en">Email</span></dt>
-      <dd><a href="mailto:maroon50317@gmail.com">maroon50317@gmail.com</a></dd>
-      <dt><span data-l="zh">手機</span><span data-l="ja">電話</span><span data-l="en">Phone</span></dt>
-      <dd><a href="tel:+886978760019">+886 978-760-019</a></dd>
-    </dl>
-  </div>
-</section>
 
 <footer class="wrap">© 2026 蔡承佑</footer>
 
