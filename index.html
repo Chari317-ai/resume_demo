@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant-TW" data-lang="zh">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>蔡承佑｜履歷</title>
-<meta name="description" content="蔡承佑的個人履歷：中日英三語，日本地方政府實習經驗，志在國際商務開發與海外市場拓展。">
+<title>蔡承佑｜個人網站</title>
+<meta name="description" content="蔡承佑的個人網站：中日英三語，日本與台灣實習經驗，志在國際商務開發與海外市場拓展。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@600;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f5f8;
@@ -18,29 +18,28 @@
     --indigo: #2a4a7f;
     --indigo-soft: #e3e9f3;
     --serif: "Noto Serif TC", "Songti TC", serif;
-    --serif-jp: "Noto Serif JP", "Hiragino Mincho ProN", serif;
     --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+  :root[data-lang="ja"] {
+    --serif: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    --sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #141a24;
-      --sheet: #1b2230;
-      --ink: #e6eaf0;
-      --muted: #9aa5b5;
-      --line: #2e3747;
-      --indigo: #8fb0e6;
-      --indigo-soft: #233049;
+      --paper: #141a24; --sheet: #1b2230; --ink: #e6eaf0; --muted: #9aa5b5;
+      --line: #2e3747; --indigo: #8fb0e6; --indigo-soft: #233049;
     }
   }
   :root[data-theme="dark"] {
-    --paper: #141a24;
-    --sheet: #1b2230;
-    --ink: #e6eaf0;
-    --muted: #9aa5b5;
-    --line: #2e3747;
-    --indigo: #8fb0e6;
-    --indigo-soft: #233049;
+    --paper: #141a24; --sheet: #1b2230; --ink: #e6eaf0; --muted: #9aa5b5;
+    --line: #2e3747; --indigo: #8fb0e6; --indigo-soft: #233049;
   }
+
+  /* 語言切換：只顯示目前語言的文字 */
+  [data-l] { display: none; }
+  :root[data-lang="zh"] [data-l="zh"],
+  :root[data-lang="ja"] [data-l="ja"],
+  :root[data-lang="en"] [data-l="en"] { display: revert; }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -55,253 +54,407 @@
   }
   a { color: inherit; }
   :focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
-  .wrap { margin: 0 auto; padding: 0 6vw; }
+  .wrap { padding: 0 6vw; }
+  h1, h2, h3, p, ul, ol, dl { margin: 0; }
+  .values, .edu { padding: 0; }
 
-  /* 導覽 */
-  .nav { display: flex; align-items: center; justify-content: space-between; padding-block: 20px; }
-  .nav .me { font-family: var(--serif); font-weight: 700; font-size: 18px; letter-spacing: .12em; text-decoration: none; }
-  .nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+  /* 導覽列 */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    padding-block: 18px; background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .nav .me { font-family: var(--serif); font-weight: 700; font-size: 1.1em; letter-spacing: .12em; text-decoration: none; }
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav ul { display: flex; gap: 28px; list-style: none; padding: 0; font-size: .9em; }
   .nav ul a { text-decoration: none; color: var(--muted); }
   .nav ul a:hover { color: var(--ink); }
-
-  /* 主視覺：三語標題 */
-  .hero {
-    display: grid; grid-template-columns: 1fr clamp(240px, 26vw, 480px); gap: 6vw; align-items: center;
-    min-height: calc(100vh - 210px); padding-block: 32px;
+  .langs-switch { display: flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .langs-switch button {
+    font: inherit; font-size: .85em; padding: 6px 14px; border: 0; background: transparent; color: var(--muted); cursor: pointer;
   }
-  .hero .who { margin: 0 0 32px; color: var(--muted); font-size: 16px; }
-  .hero .who strong { color: var(--ink); font-family: var(--serif); font-size: 22px; letter-spacing: .14em; margin-right: 12px; }
-  .tri { margin: 0; font-family: var(--serif); font-weight: 700; }
-  .tri span { display: block; }
-  .tri .zh { font-size: clamp(32px, 4.6vw, 96px); line-height: 1.25; font-weight: 900; }
-  .tri .ja { font-family: var(--serif-jp); font-size: clamp(18px, 1.9vw, 38px); line-height: 1.5; color: var(--indigo); margin-top: 16px; }
-  .tri .en { font-size: clamp(16px, 1.35vw, 27px); line-height: 1.5; color: var(--muted); font-weight: 600; margin-top: 6px; }
-  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; margin-top: 40px; }
+  .langs-switch button + button { border-left: 1px solid var(--line); }
+  .langs-switch button[aria-pressed="true"] { background: var(--indigo); color: var(--sheet); font-weight: 700; }
+
+  /* ① 名片區 */
+  .hero {
+    display: grid; grid-template-columns: 1fr clamp(240px, 24vw, 440px); gap: 6vw; align-items: center;
+    min-height: calc(100vh - 72px); padding-block: 40px 56px;
+  }
+  .who { color: var(--muted); margin-bottom: 28px; }
+  .who strong { color: var(--ink); font-family: var(--serif); font-size: 1.35em; letter-spacing: .12em; margin-right: 14px; }
+  .hero h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(34px, 4.4vw, 88px); line-height: 1.25; letter-spacing: .01em; }
+  :root[data-lang="en"] .hero h1 { font-size: clamp(32px, 3.8vw, 76px); line-height: 1.15; letter-spacing: -.01em; }
+  .hero .lead { margin-top: 28px; color: var(--muted); max-width: 34em; font-size: 1.08em; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; margin-top: 36px; }
   .btn {
-    display: inline-block; padding: 12px 24px; border-radius: 4px; font-weight: 700; font-size: 15px;
-    text-decoration: none; background: var(--indigo); color: var(--sheet); border: 0; cursor: pointer; font-family: inherit;
+    display: inline-block; padding: 13px 26px; border-radius: 4px; font-weight: 700;
+    text-decoration: none; background: var(--indigo); color: var(--sheet);
   }
   .btn:hover { filter: brightness(1.12); }
-  .text-link { font-weight: 500; text-underline-offset: 5px; text-decoration-thickness: 2px; text-decoration-color: var(--indigo); background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; }
-  .photo { width: 100%; aspect-ratio: 557 / 492; object-fit: cover; display: block; border-radius: 4px; box-shadow: 14px 14px 0 var(--indigo-soft); }
-
-  /* 一次出場的三語動畫 */
-  @media (prefers-reduced-motion: no-preference) {
-    .tri span { opacity: 0; transform: translateY(10px); animation: rise .7s ease-out forwards; }
-    .tri .ja { animation-delay: .25s; }
-    .tri .en { animation-delay: .5s; }
-    @keyframes rise { to { opacity: 1; transform: none; } }
+  .text-link {
+    background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; text-decoration-color: var(--indigo);
   }
+  .photo { width: 100%; aspect-ratio: 557 / 492; object-fit: cover; display: block; border-radius: 4px; box-shadow: 16px 16px 0 var(--indigo-soft); }
 
-  /* 語言能力帶 */
-  .langs { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--sheet); border-top: 3px solid var(--indigo); }
-  .langs div { padding: 24px 28px; }
-  .langs div + div { border-left: 1px solid var(--line); }
-  .langs .name { font-family: var(--serif); font-weight: 700; font-size: 20px; margin: 0; }
-  .langs .name:lang(ja) { font-family: var(--serif-jp); }
-  .langs .level { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
-
-  /* 區段 */
-  .block { display: grid; grid-template-columns: minmax(160px, 22%) 1fr; gap: 4vw; padding-block: 72px; border-bottom: 1px solid var(--line); }
-  .block:last-of-type { border-bottom: 0; }
-  .block > h2 { margin: 0; font-family: var(--serif); font-size: 26px; font-weight: 700; letter-spacing: .1em; line-height: 1.4; }
-  .prose p { margin: 0 0 1em; max-width: 36em; }
-  .prose p:last-child { margin-bottom: 0; }
-
-  /* 時間軸（經歷、學歷依時間排列） */
-  .timeline { list-style: none; margin: 0; padding: 0; }
-  .timeline > li { display: grid; grid-template-columns: 150px 1fr; gap: 24px; position: relative; padding-bottom: 40px; }
-  .timeline > li:last-child { padding-bottom: 0; }
-  .timeline time { color: var(--muted); font-size: 14px; line-height: 1.9; font-variant-numeric: tabular-nums; padding-top: 3px; }
-  .timeline .body { border-left: 2px solid var(--line); padding-left: 24px; position: relative; }
-  .timeline .body::before {
-    content: ""; position: absolute; left: -7px; top: 9px; width: 12px; height: 12px; border-radius: 50%;
-    background: var(--paper); border: 2px solid var(--indigo);
+  /* 足跡：台北 → 達拉斯 → 東京 */
+  .route { list-style: none; padding: 0; margin-top: 56px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 820px; position: relative; }
+  .route::before { content: ""; position: absolute; left: 7px; right: 0; top: 7px; border-top: 2px dashed var(--line); }
+  .route li { position: relative; padding-top: 28px; padding-right: 16px; }
+  .route li::before {
+    content: ""; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--paper); border: 3px solid var(--indigo);
   }
-  .timeline h3 { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5; }
-  .timeline .role { margin: 2px 0 10px; color: var(--muted); font-size: 15px; }
-  .timeline .place { display: inline-block; margin-left: 8px; padding: 0 8px; border-radius: 3px; background: var(--indigo-soft); color: var(--indigo); font-size: 13px; font-weight: 500; vertical-align: 2px; }
-  .timeline ul { margin: 0; padding-left: 1.2em; }
-  .timeline ul li { margin-bottom: 4px; max-width: 38em; }
-  .timeline ul li::marker { color: var(--indigo); }
+  .route li:last-child::before { background: var(--indigo); }
+  .route .city { font-family: var(--serif); font-weight: 700; font-size: 1.15em; }
+  .route .year { color: var(--indigo); font-weight: 700; margin-left: 8px; font-variant-numeric: tabular-nums; }
+  .route .what { display: block; color: var(--muted); font-size: .88em; line-height: 1.6; }
 
-  /* 專業領域、個人特色 */
-  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .pair h3 { margin: 0 0 12px; font-size: 17px; font-weight: 700; color: var(--indigo); }
-  .pair ul { margin: 0; padding: 0; list-style: none; }
-  .pair li { padding: 10px 0; border-top: 1px solid var(--line); }
-  .pair li:last-child { border-bottom: 1px solid var(--line); }
+  /* 區段共用 */
+  .block { padding-block: 104px; border-top: 1px solid var(--line); }
+  .block-head { display: grid; grid-template-columns: minmax(180px, 24%) 1fr; gap: 4vw; margin-bottom: 56px; align-items: baseline; }
+  .block-head h2 { font-family: var(--serif); font-size: clamp(26px, 2.2vw, 40px); font-weight: 700; letter-spacing: .06em; line-height: 1.35; }
+  :root[data-lang="en"] .block-head h2 { letter-spacing: 0; }
+  .block-head p { color: var(--muted); max-width: 36em; }
 
-  /* 聯絡 */
-  .contact { display: grid; grid-template-columns: auto 1fr; gap: 10px 24px; margin: 0; }
-  .contact dt { color: var(--muted); }
-  .contact dd { margin: 0; overflow-wrap: anywhere; }
-  .contact a { text-underline-offset: 4px; text-decoration-color: var(--indigo); }
+  /* ② 我能帶來什麼 */
+  .values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 3px solid var(--indigo); background: var(--sheet); }
+  .values li { list-style: none; padding: 36px 36px 40px; }
+  .values li + li { border-left: 1px solid var(--line); }
+  .values h3 { font-family: var(--serif); font-size: 1.4em; font-weight: 700; line-height: 1.4; margin-bottom: 14px; }
+  .values p { color: var(--muted); }
+  .values ul { padding: 0; }
 
-  footer { padding-block: 32px 48px; color: var(--muted); font-size: 14px; }
+  /* ③ 經驗案例 */
+  .case { display: grid; grid-template-columns: minmax(180px, 24%) 1fr; gap: 4vw; padding-block: 48px; border-top: 1px solid var(--line); }
+  .case:first-of-type { border-top: 0; padding-top: 0; }
+  .case .meta { color: var(--muted); font-size: .92em; }
+  .case .meta .place { display: inline-block; margin-top: 10px; padding: 0 10px; border-radius: 3px; background: var(--indigo-soft); color: var(--indigo); font-weight: 500; font-size: .9em; }
+  .case h3 { font-family: var(--serif); font-size: clamp(22px, 1.8vw, 32px); font-weight: 700; line-height: 1.4; }
+  .case .context { margin-top: 10px; color: var(--muted); max-width: 40em; }
+  .case-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 4vw; margin-top: 28px; }
+  .case h4 { margin: 0 0 10px; font-size: .9em; font-weight: 700; color: var(--indigo); }
+  .case ul { padding-left: 1.2em; }
+  .case li { margin-bottom: 6px; }
+  .case li::marker { color: var(--indigo); }
+  .takeaway { background: var(--sheet); border-left: 3px solid var(--indigo); padding: 18px 22px; }
 
-  /* 列印：整理成單純的 A4 文件 */
+  /* ④ 學歷 */
+  .edu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4vw; }
+  .edu li { list-style: none; border-top: 1px solid var(--ink); padding-top: 20px; }
+  .edu .when { color: var(--muted); font-size: .9em; font-variant-numeric: tabular-nums; }
+  .edu h3 { font-family: var(--serif); font-size: 1.4em; font-weight: 700; margin-top: 4px; line-height: 1.4; }
+  .edu .degree { margin-top: 2px; }
+  .edu .note { margin-top: 12px; color: var(--muted); }
+
+  /* ⑤ 語言與技能 */
+  .lang-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--sheet); border-top: 3px solid var(--indigo); }
+  .lang-cards > div { padding: 28px 32px; }
+  .lang-cards > div + div { border-left: 1px solid var(--line); }
+  .lang-cards .name { font-family: var(--serif); font-weight: 700; font-size: 1.5em; line-height: 1.3; }
+  .lang-cards .name[lang="ja"] { font-family: "Noto Serif JP", serif; }
+  .lang-cards .level { margin-top: 6px; color: var(--muted); }
+  .skills-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4vw; margin-top: 56px; align-items: start; }
+  .skills-row h3 { font-size: 1em; font-weight: 700; color: var(--indigo); margin-bottom: 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; list-style: none; }
+  .tags li { border: 1px solid var(--line); background: var(--sheet); border-radius: 999px; padding: 6px 18px; }
+  .ai-note { border: 1px dashed var(--indigo); border-radius: 4px; padding: 20px 24px; }
+  .ai-note p { color: var(--muted); }
+
+  /* ⑥ 關於我 */
+  .about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4vw; }
+  .about .prose p + p { margin-top: 1em; }
+  .about .prose p { max-width: 36em; }
+  .traits { padding: 0; list-style: none; }
+  .traits li { padding: 12px 0; border-top: 1px solid var(--line); }
+  .traits li:last-child { border-bottom: 1px solid var(--line); }
+
+  /* ⑦ 聯絡 */
+  .contact { background: var(--indigo); color: var(--sheet); padding-block: 96px; }
+  .contact h2 { font-family: var(--serif); font-size: clamp(30px, 3.2vw, 60px); font-weight: 900; line-height: 1.3; }
+  .contact .lead { margin-top: 16px; opacity: .85; max-width: 32em; }
+  .contact dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 32px; margin-top: 40px; font-size: 1.1em; }
+  .contact dt { opacity: .7; }
+  .contact dd { margin: 0; }
+  .contact a { text-underline-offset: 5px; }
+  footer { padding-block: 28px; color: var(--muted); font-size: .85em; }
+
+  /* 列印：輸出成乾淨的文件 */
   @media print {
     @page { size: A4; margin: 14mm; }
     :root { --paper: #fff; --sheet: #fff; --ink: #000; --muted: #444; --line: #ccc; --indigo: #2a4a7f; --indigo-soft: #e3e9f3; }
-    body { font-size: 11.5px; line-height: 1.6; }
-    .nav ul, .actions, footer { display: none; }
-    .wrap { padding: 0; max-width: none; min-width: 0; }
-    .tri span { opacity: 1 !important; transform: none !important; animation: none !important; }
-    .hero { grid-template-columns: 1fr 150px; gap: 24px; padding-block: 8px 20px; }
-    .tri .zh { font-size: 28px; }
-    .tri .ja { font-size: 17px; margin-top: 8px; }
-    .tri .en { font-size: 13px; }
+    body { font-size: 11px; line-height: 1.6; }
+    .nav, .actions, footer, .route::before { display: none; }
+    .wrap { padding: 0; }
+    .hero { min-height: 0; padding-block: 0 16px; grid-template-columns: 1fr 140px; }
+    .hero h1 { font-size: 26px; }
+    .route { margin-top: 16px; }
     .photo { box-shadow: none; }
-    .block { padding-block: 18px; grid-template-columns: 110px 1fr; gap: 20px; break-inside: avoid; }
-    .block > h2 { font-size: 16px; }
-    .timeline > li { grid-template-columns: 110px 1fr; padding-bottom: 14px; break-inside: avoid; }
-    .timeline h3 { font-size: 13px; }
-    .langs div { padding: 10px 14px; }
-    .langs .name { font-size: 14px; }
+    .block { padding-block: 16px; break-inside: avoid; }
+    .block-head { margin-bottom: 12px; }
+    .case { padding-block: 12px; break-inside: avoid; }
+    .contact { background: none; color: #000; padding-block: 16px; }
+    .contact h2 { font-size: 20px; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <nav class="nav" aria-label="頁面導覽">
-    <a class="me" href="#top">蔡承佑</a>
+<nav class="nav wrap" aria-label="頁面導覽">
+  <a class="me" href="#top">蔡承佑</a>
+  <div class="nav-right">
     <ul>
-      <li><a href="#about">自我介紹</a></li>
-      <li><a href="#experience">經歷</a></li>
-      <li><a href="#education">學歷</a></li>
-      <li><a href="#strengths">專長</a></li>
-      <li><a href="#contact">聯絡</a></li>
+      <li><a href="#strengths"><span data-l="zh">優勢</span><span data-l="ja">強み</span><span data-l="en">Strengths</span></a></li>
+      <li><a href="#experience"><span data-l="zh">經驗</span><span data-l="ja">経験</span><span data-l="en">Experience</span></a></li>
+      <li><a href="#education"><span data-l="zh">學歷</span><span data-l="ja">学歴</span><span data-l="en">Education</span></a></li>
+      <li><a href="#skills"><span data-l="zh">技能</span><span data-l="ja">スキル</span><span data-l="en">Skills</span></a></li>
+      <li><a href="#about"><span data-l="zh">關於我</span><span data-l="ja">自己紹介</span><span data-l="en">About</span></a></li>
+      <li><a href="#contact"><span data-l="zh">聯絡</span><span data-l="ja">連絡先</span><span data-l="en">Contact</span></a></li>
     </ul>
-  </nav>
-
-  <header class="hero" id="top">
-    <div>
-      <p class="who"><strong>蔡承佑</strong>2026 學士應屆畢業生｜日文系／經濟系雙主修</p>
-      <h1 class="tri">
-        <span class="zh">用三種語言，<br>連結跨國合作。</span>
-        <span class="ja" lang="ja">三つの言語で、国境を越えた協力をつなぐ。</span>
-        <span class="en" lang="en">Connecting cross-border partnerships in three languages.</span>
-      </h1>
-      <div class="actions">
-        <a class="btn" href="mailto:maroon50317@gmail.com">寄信給我</a>
-        <button class="text-link" type="button" onclick="window.print()">列印／存成 PDF</button>
-      </div>
+    <div class="langs-switch" role="group" aria-label="Language">
+      <button type="button" data-set="zh" aria-pressed="true">中</button>
+      <button type="button" data-set="ja" aria-pressed="false" lang="ja">日</button>
+      <button type="button" data-set="en" aria-pressed="false" lang="en">EN</button>
     </div>
-    <div class="portrait">
-      <img class="photo" src="images/photo.jpg" alt="蔡承佑的大頭照">
-    </div>
-  </header>
+  </div>
+</nav>
 
-  <section class="langs" aria-label="語言能力">
-    <div><p class="name">中文</p><p class="level">母語</p></div>
-    <div><p class="name" lang="ja">日本語</p><p class="level">JLPT N2（2024）</p></div>
-    <div><p class="name" lang="en">English</p><p class="level">TOEIC 880｜TOEFL iBT 82</p></div>
+<!-- ① 名片區 -->
+<header class="hero wrap" id="top">
+  <div>
+    <p class="who">
+      <strong>蔡承佑</strong>
+      <span data-l="zh">2026 年畢業｜日文系／經濟系雙主修</span>
+      <span data-l="ja">2026年卒業｜日本語学・経済学ダブルメジャー</span>
+      <span data-l="en">Class of 2026 | Japanese &amp; Economics double major</span>
+    </p>
+    <h1>
+      <span data-l="zh">用三種語言，<br>連結台灣、日本與世界。</span>
+      <span data-l="ja" lang="ja">三つの言語で、<br>台湾と日本、世界をつなぐ。</span>
+      <span data-l="en" lang="en">Connecting Taiwan, Japan, and the world in three languages.</span>
+    </h1>
+    <p class="lead">
+      <span data-l="zh">中文母語、日文 JLPT N2、英文 TOEIC 880。希望投入國際商務開發、合作夥伴經營與海外市場拓展，協助企業建立跨國合作。</span>
+      <span data-l="ja" lang="ja">中国語ネイティブ、日本語 JLPT N2、英語 TOEIC 880。国際ビジネス開発、パートナー管理、海外市場開拓の分野で、企業の国境を越えた協力づくりに貢献したいと考えています。</span>
+      <span data-l="en" lang="en">Native Mandarin, Japanese JLPT N2, English TOEIC 880. Looking to work in international business development, partner management, and overseas market expansion, helping companies build partnerships across borders.</span>
+    </p>
+    <div class="actions">
+      <a class="btn" href="mailto:maroon50317@gmail.com"><span data-l="zh">寄信給我</span><span data-l="ja">メールで連絡する</span><span data-l="en">Email me</span></a>
+      <button class="text-link" type="button" onclick="window.print()"><span data-l="zh">列印／存成 PDF</span><span data-l="ja">印刷／PDF で保存</span><span data-l="en">Print or save as PDF</span></button>
+    </div>
+    <ol class="route" aria-label="足跡">
+      <li>
+        <span class="city"><span data-l="zh">台北</span><span data-l="ja">台北</span><span data-l="en">Taipei</span></span><span class="year">2021</span>
+        <span class="what"><span data-l="zh">松江 LEXUS 實習</span><span data-l="ja">松江 LEXUS でインターン</span><span data-l="en">Intern at Lexus Songjiang</span></span>
+      </li>
+      <li>
+        <span class="city"><span data-l="zh">達拉斯</span><span data-l="ja">ダラス</span><span data-l="en">Dallas</span></span><span class="year">2022</span>
+        <span class="what"><span data-l="zh">德州大學達拉斯分校</span><span data-l="ja">テキサス大学ダラス校</span><span data-l="en">UT Dallas</span></span>
+      </li>
+      <li>
+        <span class="city"><span data-l="zh">東京</span><span data-l="ja">東京</span><span data-l="en">Tokyo</span></span><span class="year">2024</span>
+        <span class="what"><span data-l="zh">世田谷區公所實習</span><span data-l="ja">世田谷区役所でインターン</span><span data-l="en">Intern at Setagaya City Office</span></span>
+      </li>
+    </ol>
+  </div>
+  <div>
+    <img class="photo" src="images/photo.jpg" alt="蔡承佑">
+  </div>
+</header>
+
+<main>
+  <!-- ② 我能帶來什麼 -->
+  <section class="block wrap" id="strengths">
+    <div class="block-head">
+      <h2><span data-l="zh">我能帶來什麼</span><span data-l="ja">私の強み</span><span data-l="en">What I bring</span></h2>
+      <p><span data-l="zh">語言、分析與跨文化經驗，是我投入國際商務的三個基礎。</span><span data-l="ja">語学力、分析力、異文化経験。この三つが、国際ビジネスに挑戦する私の土台です。</span><span data-l="en">Languages, analysis, and cross-cultural experience: the three foundations I bring to international business.</span></p>
+    </div>
+    <ul class="values">
+      <li>
+        <h3><span data-l="zh">三語溝通</span><span data-l="ja">3 言語でのコミュニケーション</span><span data-l="en">Trilingual communication</span></h3>
+        <p><span data-l="zh">中文母語、日文 JLPT N2、英文 TOEIC 880。在東京區公所實際負責日英翻譯與資訊發布。</span><span data-l="ja">中国語ネイティブ、日本語 JLPT N2、英語 TOEIC 880。東京の区役所で日英翻訳と情報発信を担当しました。</span><span data-l="en">Native Mandarin, Japanese JLPT N2, English TOEIC 880. Handled Japanese–English translation and public information at a Tokyo city office.</span></p>
+      </li>
+      <li>
+        <h3><span data-l="zh">市場研究與分析</span><span data-l="ja">市場調査と分析</span><span data-l="en">Market research and analysis</span></h3>
+        <p><span data-l="zh">經濟學背景，加上在汽車業蒐集產業趨勢、競品資訊並進行市場分析的經驗。</span><span data-l="ja">経済学の知識に加え、自動車業界で業界動向や競合情報を調査・分析した経験があります。</span><span data-l="en">An economics background plus hands-on experience researching industry trends and competitors in the auto industry.</span></p>
+      </li>
+      <li>
+        <h3><span data-l="zh">跨文化合作</span><span data-l="ja">異文化での協働</span><span data-l="en">Cross-cultural collaboration</span></h3>
+        <p><span data-l="zh">在台灣、美國、日本都有學習或工作經驗，樂於與不同背景的人建立長期合作關係。</span><span data-l="ja">台湾・アメリカ・日本で学び、働いた経験があり、さまざまな背景を持つ人と長期的な関係を築くことが得意です。</span><span data-l="en">Studied and worked in Taiwan, the US, and Japan, and enjoy building long-term relationships with people from different backgrounds.</span></p>
+      </li>
+    </ul>
   </section>
 
-  <main>
-    <section class="block" id="about">
-      <h2>自我介紹</h2>
+  <!-- ③ 經驗案例 -->
+  <section class="block wrap" id="experience">
+    <div class="block-head">
+      <h2><span data-l="zh">經驗</span><span data-l="ja">実務経験</span><span data-l="en">Experience</span></h2>
+      <p><span data-l="zh">兩段實習：一段在日本的地方政府，一段在台灣的汽車業。</span><span data-l="ja">日本の地方自治体と台湾の自動車業界で、2 つのインターンシップを経験しました。</span><span data-l="en">Two internships: one in Japanese local government, one in Taiwan's auto industry.</span></p>
+    </div>
+
+    <article class="case">
+      <div class="meta">
+        <div>2024/05 – 2024/07</div>
+        <div><span data-l="zh">實習生｜政府機關</span><span data-l="ja">インターン｜行政機関</span><span data-l="en">Intern | Local government</span></div>
+        <span class="place"><span data-l="zh">日本東京</span><span data-l="ja">東京</span><span data-l="en">Tokyo, Japan</span></span>
+      </div>
+      <div>
+        <h3><span data-l="zh">東京都世田谷區區公所</span><span data-l="ja">東京都世田谷区役所</span><span data-l="en">Setagaya City Office, Tokyo</span></h3>
+        <p class="context"><span data-l="zh">為區內居民與外籍居民傳遞地方活動、觀光與行政資訊。</span><span data-l="ja">区民や外国人住民に向けて、地域イベントや観光、行政の情報を発信する仕事です。</span><span data-l="en">Sharing local events, tourism, and public information with residents, including foreign residents.</span></p>
+        <div class="case-grid">
+          <div>
+            <h4><span data-l="zh">做了什麼</span><span data-l="ja">担当業務</span><span data-l="en">What I did</span></h4>
+            <ul>
+              <li><span data-l="zh">協助區公所社群媒體經營，推廣地方活動及觀光資訊</span><span data-l="ja">区役所の SNS 運営をサポートし、地域イベントや観光情報を発信</span><span data-l="en">Supported the office's social media, promoting local events and tourism</span></li>
+              <li><span data-l="zh">將導覽資料及網站內容進行日英翻譯，讓外籍居民更容易取得資訊</span><span data-l="ja">案内資料やウェブサイトを日英翻訳し、外国人住民が情報を得やすい環境づくりに貢献</span><span data-l="en">Translated guide materials and website content between Japanese and English so foreign residents could find information more easily</span></li>
+              <li><span data-l="zh">參與地區活動的籌辦與執行，協助建立居民與政府部門間的互動</span><span data-l="ja">地域イベントの企画・運営に参加し、住民と行政のつながりづくりをサポート</span><span data-l="en">Helped plan and run community events that connected residents with local government</span></li>
+            </ul>
+          </div>
+          <div class="takeaway">
+            <h4><span data-l="zh">帶走的能力</span><span data-l="ja">得たもの</span><span data-l="en">What I took away</span></h4>
+            <p><span data-l="zh">跨部門合作與溝通的經驗，以及在日語職場中實際工作的能力。</span><span data-l="ja">部署を越えた協働とコミュニケーションの経験、そして日本語の職場で働く実践力。</span><span data-l="en">Cross-department collaboration and communication, plus real experience working in a Japanese-speaking workplace.</span></p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="meta">
+        <div>2021/09 – 2021/12</div>
+        <div><span data-l="zh">實習生｜汽車批發業</span><span data-l="ja">インターン｜自動車販売</span><span data-l="en">Intern | Automotive</span></div>
+        <span class="place"><span data-l="zh">台灣台北</span><span data-l="ja">台北</span><span data-l="en">Taipei, Taiwan</span></span>
+      </div>
+      <div>
+        <h3>松江 LEXUS</h3>
+        <p class="context"><span data-l="zh">在汽車經銷的第一線，掌握市場與競爭對手的動態。</span><span data-l="ja">自動車販売の現場で、市場と競合の動きを把握する仕事です。</span><span data-l="en">Keeping track of the market and competitors at a car dealership.</span></p>
+        <div class="case-grid">
+          <div>
+            <h4><span data-l="zh">做了什麼</span><span data-l="ja">担当業務</span><span data-l="en">What I did</span></h4>
+            <ul>
+              <li><span data-l="zh">蒐集產業趨勢及競爭對手資訊，進行市場分析與資料整理</span><span data-l="ja">業界動向と競合情報を収集し、市場分析とデータ整理を担当</span><span data-l="en">Gathered industry trends and competitor information for market analysis</span></li>
+              <li><span data-l="zh">協助產品評估流程優化</span><span data-l="ja">商品評価プロセスの改善をサポート</span><span data-l="en">Helped improve the product evaluation process</span></li>
+            </ul>
+          </div>
+          <div class="takeaway">
+            <h4><span data-l="zh">帶走的能力</span><span data-l="ja">得たもの</span><span data-l="en">What I took away</span></h4>
+            <p><span data-l="zh">商業分析能力，以及跨部門溝通的能力。</span><span data-l="ja">ビジネス分析力と、部署間のコミュニケーション力。</span><span data-l="en">Business analysis and cross-team communication skills.</span></p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ④ 學歷 -->
+  <section class="block wrap" id="education">
+    <div class="block-head">
+      <h2><span data-l="zh">學歷</span><span data-l="ja">学歴</span><span data-l="en">Education</span></h2>
+      <p><span data-l="zh">日文與經濟雙主修，並曾在美國修讀行銷。</span><span data-l="ja">日本語学と経済学をダブルメジャーで学び、アメリカではマーケティングを学びました。</span><span data-l="en">A double major in Japanese and Economics, with marketing studies in the US.</span></p>
+    </div>
+    <ol class="edu">
+      <li>
+        <div class="when">2022/09 – 2026/04</div>
+        <h3><span data-l="zh">天普大學</span><span data-l="ja">テンプル大学</span><span data-l="en">Temple University</span></h3>
+        <p class="degree"><span data-l="zh">日文系／經濟系學士</span><span data-l="ja">日本語学・経済学 学士</span><span data-l="en">B.A. in Japanese and Economics</span></p>
+        <p class="note"><span data-l="zh">GPA 3.6 畢業；2024 年上學期列入優秀學生名單</span><span data-l="ja">GPA 3.6 で卒業。2024年前期に成績優秀者リスト（Dean's List）に選出</span><span data-l="en">Graduated with a 3.6 GPA; Dean's List, 2024</span></p>
+      </li>
+      <li>
+        <div class="when">2022/01 – 2022/05</div>
+        <h3><span data-l="zh">德州大學達拉斯分校</span><span data-l="ja">テキサス大学ダラス校</span><span data-l="en">The University of Texas at Dallas</span></h3>
+        <p class="degree"><span data-l="zh">行銷學</span><span data-l="ja">マーケティング</span><span data-l="en">Marketing</span></p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ⑤ 語言與技能 -->
+  <section class="block wrap" id="skills">
+    <div class="block-head">
+      <h2><span data-l="zh">語言與技能</span><span data-l="ja">語学とスキル</span><span data-l="en">Languages and skills</span></h2>
+      <p><span data-l="zh">三種語言都有正式檢定成績。</span><span data-l="ja">3 言語すべてで公式スコアを取得しています。</span><span data-l="en">Official test scores in all three languages.</span></p>
+    </div>
+    <div class="lang-cards">
+      <div><p class="name" lang="zh-Hant">中文</p><p class="level"><span data-l="zh">母語</span><span data-l="ja">ネイティブ</span><span data-l="en">Native</span></p></div>
+      <div><p class="name" lang="ja">日本語</p><p class="level">JLPT N2（2024）</p></div>
+      <div><p class="name" lang="en">English</p><p class="level">TOEIC 880 | TOEFL iBT 82</p></div>
+    </div>
+    <div class="skills-row">
+      <div>
+        <h3><span data-l="zh">專業領域</span><span data-l="ja">専門分野</span><span data-l="en">Areas of focus</span></h3>
+        <ul class="tags">
+          <li><span data-l="zh">日本市場分析</span><span data-l="ja">日本市場分析</span><span data-l="en">Japan market analysis</span></li>
+          <li><span data-l="zh">國際商務與客戶關係管理</span><span data-l="ja">国際ビジネスと顧客関係管理</span><span data-l="en">International business and client relations</span></li>
+          <li><span data-l="zh">市場研究與商業分析</span><span data-l="ja">市場調査とビジネス分析</span><span data-l="en">Market research and business analysis</span></li>
+          <li><span data-l="zh">中日英跨文化溝通</span><span data-l="ja">中・日・英の異文化コミュニケーション</span><span data-l="en">Cross-cultural communication</span></li>
+          <li><span data-l="zh">商業簡報與資訊整合</span><span data-l="ja">プレゼンテーションと情報整理</span><span data-l="en">Business presentations and research synthesis</span></li>
+        </ul>
+      </div>
+      <div class="ai-note">
+        <h3><span data-l="zh">AI 工具應用</span><span data-l="ja">AI ツールの活用</span><span data-l="en">Working with AI</span></h3>
+        <p><span data-l="zh">理解生成式 AI 的商業應用，平常會使用 Gemini 等 Google AI 工具，也正在學習 AI Agent 的基本概念。</span><span data-l="ja">生成 AI のビジネス活用を理解し、Gemini などの Google AI ツールを日常的に使っています。AI エージェントの基礎も学習中です。</span><span data-l="en">I understand how generative AI is used in business, use Google AI tools like Gemini, and am learning the basics of AI agents.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ 關於我 -->
+  <section class="block wrap" id="about">
+    <div class="block-head">
+      <h2><span data-l="zh">關於我</span><span data-l="ja">自己紹介</span><span data-l="en">About me</span></h2>
+      <p><span data-l="zh">履歷之外，多認識我一點。</span><span data-l="ja">履歴書には書ききれない、私のこと。</span><span data-l="en">A little more about me beyond the résumé.</span></p>
+    </div>
+    <div class="about">
       <div class="prose">
-        <p>我具備日本留學及跨文化交流經驗，擁有日文與經濟學雙主修背景。曾參與日本地方政府實習，累積跨部門合作與溝通經驗。</p>
-        <p>我樂於與不同文化背景的人建立關係，並善於從多元角度理解需求、整合資源與推動合作。</p>
-        <p>未來希望投入國際商務開發、合作夥伴經營或海外市場拓展相關工作，活用中、英、日三語能力及國際視野，協助企業建立跨國合作並創造市場價值。</p>
+        <p><span data-l="zh">我在日本留學，也在日本的地方政府實習過。這些經驗讓我習慣從不同角度理解需求，再把資源整合起來、推動合作。</span><span data-l="ja">日本に留学し、日本の地方自治体でインターンも経験しました。その中で、さまざまな視点からニーズを理解し、資源をまとめて協力を進める力を身につけました。</span><span data-l="en">I studied in Japan and interned in Japanese local government. Those experiences taught me to understand needs from different angles, bring resources together, and move collaboration forward.</span></p>
+        <p><span data-l="zh">我很喜歡和不同文化背景的人交朋友。工作之外，我喜歡打羽球和聽音樂。</span><span data-l="ja">異なる文化背景を持つ人と関係を築くのが好きです。仕事以外では、バドミントンと音楽鑑賞が趣味です。</span><span data-l="en">I love getting to know people from different cultures. Outside work, I play badminton and listen to music.</span></p>
       </div>
-    </section>
+      <ul class="traits">
+        <li><span data-l="zh">日本、美國及台灣的跨文化學習經驗</span><span data-l="ja">日本・アメリカ・台湾での異文化学習経験</span><span data-l="en">Cross-cultural study in Japan, the US, and Taiwan</span></li>
+        <li><span data-l="zh">樂於建立人際關係與長期合作關係</span><span data-l="ja">人間関係と長期的な協力関係を築くことが好き</span><span data-l="en">Enjoy building relationships and long-term partnerships</span></li>
+        <li><span data-l="zh">對客戶需求與市場趨勢具高度敏感度</span><span data-l="ja">顧客ニーズと市場トレンドへの高い感度</span><span data-l="en">Attentive to client needs and market trends</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
 
-    <section class="block" id="experience">
-      <h2>專業經歷</h2>
-      <ol class="timeline" reversed>
-        <li>
-          <time>2024/05 – 2024/07</time>
-          <div class="body">
-            <h3>東京都世田谷區區公所<span class="place">東京</span></h3>
-            <p class="role">實習生｜政府／民意機關</p>
-            <ul>
-              <li>協助世田谷區公所社群媒體經營，推廣地方活動及觀光資訊</li>
-              <li>區公所導覽資料及其網站內容之日英翻譯，提高外籍居民資訊取得便利性</li>
-              <li>參與區地域活動籌辦與執行，協助建立居民與政府部門間的互動關係</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <time>2021/09 – 2021/12</time>
-          <div class="body">
-            <h3>松江 LEXUS<span class="place">台北</span></h3>
-            <p class="role">實習生｜汽機車及其零配件用品／批發業</p>
-            <ul>
-              <li>蒐集產業趨勢及競爭對手資訊，進行市場分析與資料整理</li>
-              <li>協助產品評估流程優化</li>
-              <li>培養商業分析及跨部門溝通能力</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
-    </section>
+<!-- ⑦ 聯絡 -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2><span data-l="zh">一起聊聊合作的可能。</span><span data-l="ja">ぜひお気軽にご連絡ください。</span><span data-l="en">Let's talk.</span></h2>
+    <p class="lead"><span data-l="zh">對國際商務、日本市場相關職缺有興趣，歡迎來信。</span><span data-l="ja">国際ビジネスや日本市場に関わるお仕事のご相談をお待ちしています。</span><span data-l="en">I'm open to roles in international business and the Japanese market.</span></p>
+    <dl>
+      <dt><span data-l="zh">電子信箱</span><span data-l="ja">メール</span><span data-l="en">Email</span></dt>
+      <dd><a href="mailto:maroon50317@gmail.com">maroon50317@gmail.com</a></dd>
+      <dt><span data-l="zh">手機</span><span data-l="ja">電話</span><span data-l="en">Phone</span></dt>
+      <dd><a href="tel:+886978760019">+886 978-760-019</a></dd>
+    </dl>
+  </div>
+</section>
 
-    <section class="block" id="education">
-      <h2>學術背景</h2>
-      <ol class="timeline" reversed>
-        <li>
-          <time>2022/09 – 2026/04</time>
-          <div class="body">
-            <h3>天普大學</h3>
-            <p class="role">日文系／經濟系學士</p>
-            <ul>
-              <li>以 3.6 GPA 畢業</li>
-              <li>於 2024 年上學期登錄於優秀學生名單</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <time>2022/01 – 2022/05</time>
-          <div class="body">
-            <h3>德州大學達拉斯分校<span class="place">美國</span></h3>
-            <p class="role">行銷學學士</p>
-          </div>
-        </li>
-      </ol>
-    </section>
+<footer class="wrap">© 2026 蔡承佑</footer>
 
-    <section class="block" id="strengths">
-      <h2>專長與特色</h2>
-      <div class="pair">
-        <div>
-          <h3>專業領域</h3>
-          <ul>
-            <li>日本市場分析</li>
-            <li>國際商務與客戶關係管理</li>
-            <li>市場研究與商業分析</li>
-            <li>中日英跨文化溝通</li>
-            <li>商業簡報與資訊整合</li>
-          </ul>
-        </div>
-        <div>
-          <h3>個人特色</h3>
-          <ul>
-            <li>日本、美國及台灣跨文化學習經驗</li>
-            <li>理解生成式 AI 的商業應用</li>
-            <li>實踐 Gemini 等 Google AI 工具應用</li>
-            <li>樂於建立人際關係與長期合作關係</li>
-            <li>對客戶需求與市場趨勢具高度敏感度</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var htmlLang = { zh: "zh-Hant-TW", ja: "ja", en: "en" };
+    var buttons = document.querySelectorAll(".langs-switch button");
 
-    <section class="block" id="contact">
-      <h2>聯絡方式</h2>
-      <dl class="contact">
-        <dt>電子信箱</dt><dd><a href="mailto:maroon50317@gmail.com">maroon50317@gmail.com</a></dd>
-        <dt>手機</dt><dd><a href="tel:+886978760019">+886 978-760-019</a></dd>
-        <dt>地址</dt><dd>台北市士林區</dd>
-      </dl>
-    </section>
-  </main>
+    function setLang(lang) {
+      if (!htmlLang[lang]) return;
+      root.setAttribute("data-lang", lang);
+      root.setAttribute("lang", htmlLang[lang]);
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.set === lang)); });
+      try { localStorage.setItem("lang", lang); } catch (e) {}
+    }
 
-  <footer>蔡承佑｜最後更新 2026 年 10 月</footer>
-</div>
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () { setLang(b.dataset.set); });
+    });
 
+    var fromUrl = new URLSearchParams(location.search).get("lang");
+    var saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    setLang(fromUrl || saved || "zh");
+  })();
+</script>
 </body>
 </html>
