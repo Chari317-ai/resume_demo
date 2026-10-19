@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蔡承佑｜履歷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f3f1;
+    --paper: #f3f3f1;
+    --ink: #111111;
+    --muted: #333333;
+    --rule: #000000;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 56px;
+    background: var(--paper);
+  }
+
+  /* 頁首：姓名＋照片 */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 6px solid var(--rule);
+  }
+  h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+  .subtitle { margin: 0; font-size: 20px; font-weight: 500; letter-spacing: 0.05em; }
+  .photo {
+    width: 210px;
+    aspect-ratio: 557 / 492;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 主體：左側框＋右側內容 */
+  .body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 64px;
+    margin-top: 40px;
+  }
+  aside {
+    border: 6px solid var(--rule);
+    padding: 36px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  aside h2 { font-size: 26px; letter-spacing: 0.1em; }
+  h2 { margin: 0 0 10px; font-size: 19px; font-weight: 700; letter-spacing: 0.08em; }
+  h3 { margin: 0; font-size: 15px; font-weight: 700; }
+  p { margin: 0; }
+  .meta { color: var(--muted); }
+  ul { margin: 0; padding-left: 0; list-style: none; }
+  ul.dash li::before { content: "- "; }
+  ul.dot { padding-left: 1.4em; list-style: disc; }
+  a { color: inherit; }
+
+  main { display: flex; flex-direction: column; gap: 48px; }
+  .entry + .entry { margin-top: 24px; }
+  .divider { width: 48px; height: 10px; background: var(--rule); margin-top: 24px; }
+  .two-col { display: grid; grid-template-columns: auto 1fr; gap: 28px; }
+
+  /* 手機版：改成單欄 */
+  @media (max-width: 720px) {
+    .page { padding: 32px 16px; }
+    header { flex-direction: column-reverse; align-items: flex-start; }
+    .photo { width: 160px; }
+    .body { grid-template-columns: 1fr; gap: 40px; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  /* 列印：維持 A4 一頁的感覺 */
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    body { background: #fff; font-size: 12px; }
+    .page { padding: 0; max-width: none; background: #fff; }
+    .body { grid-template-columns: 34% 1fr; gap: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <h1>蔡承佑</h1>
+      <p class="subtitle">2026 學士應屆畢業生</p>
+    </div>
+    <img class="photo" src="images/photo.jpg" alt="蔡承佑的大頭照">
+  </header>
+
+  <div class="body">
+    <aside>
+      <section>
+        <h2>自我介紹</h2>
+        <p>我具備日本留學及跨文化交流經驗，擁有日文與經濟學雙主修背景。曾參與日本地方政府實習，累積跨部門合作與溝通經驗。</p>
+        <p>我樂於與不同文化背景的人建立關係，並善於從多元角度理解需求、整合資源與推動合作。</p>
+        <p>未來希望投入國際商務開發、合作夥伴經營或海外市場拓展相關工作，活用中、英、日三語能力及國際視野，協助企業建立跨國合作並創造市場價值。</p>
+      </section>
+
+      <section>
+        <h2>專業領域</h2>
+        <ul class="dot">
+          <li>日本市場分析</li>
+          <li>國際商務與客戶關係管理</li>
+          <li>市場研究與商業分析</li>
+          <li>中日英跨文化溝通</li>
+          <li>商業簡報與資訊整合</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>聯絡方式</h2>
+        <p>地址：台北市士林區</p>
+        <p>手機：<a href="tel:+886978760019">+886 978-760-019</a></p>
+        <p>電子信箱：<br><a href="mailto:maroon50317@gmail.com">maroon50317@gmail.com</a></p>
+      </section>
+    </aside>
+
+    <main>
+      <section>
+        <h2>專業經歷</h2>
+        <div class="entry">
+          <h3>東京都世田谷區區公所－實習生</h3>
+          <p class="meta">政府／民意機關｜2024/05 – 2024/07</p>
+          <ul class="dash">
+            <li>協助世田谷區公所社群媒體經營，推廣地方活動及觀光資訊</li>
+            <li>區公所導覽資料及其網站內容之日英翻譯，提高外籍居民資訊取得便利性</li>
+            <li>參與區地域活動籌辦與執行，協助建立居民與政府部門間的互動關係</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <h3>松江 LEXUS－實習生</h3>
+          <p class="meta">汽機車及其零配件用品／批發業｜2021/09 – 2021/12</p>
+          <ul class="dash">
+            <li>蒐集產業趨勢及競爭對手資訊，進行市場分析與資料整理</li>
+            <li>協助產品評估流程優化</li>
+            <li>培養商業分析及跨部門溝通能力</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>學術背景</h2>
+        <div class="entry">
+          <h3>天普大學</h3>
+          <p class="meta">日文系／經濟系學士｜2022 年 9 月 – 2026 年 4 月</p>
+          <ul class="dash">
+            <li>以 3.6 GPA 畢業</li>
+            <li>於 2024 年上學期登錄於優秀學生名單</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <h3>德州大學達拉斯分校</h3>
+          <p class="meta">行銷學學士｜2022 年 1 月 – 2022 年 5 月</p>
+        </div>
+        <div class="divider"></div>
+      </section>
+
+      <div class="two-col">
+        <section>
+          <h2>專業技能</h2>
+          <ul class="dash">
+            <li>中文（母語）</li>
+            <li>日文（JLPT N2，2024）</li>
+            <li>英文（TOEFL iBT 82／TOEIC 880）</li>
+          </ul>
+        </section>
+        <section>
+          <h2>個人特色</h2>
+          <ul class="dash">
+            <li>日本、美國及台灣跨文化學習經驗</li>
+            <li>理解生成式 AI 的商業應用</li>
+            <li>實踐 Gemini 等 Google AI 工具應用</li>
+            <li>樂於建立人際關係與長期合作關係</li>
+            <li>對客戶需求與市場趨勢具高度敏感度</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+</div>
+</body>
+</html>
